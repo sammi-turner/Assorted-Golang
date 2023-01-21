@@ -1,2 +1,3 @@
 # Monkey-Interpreter
-The programming language from Thorsten Ball's "Writing An Interpreter In Go".
+
+An implementation of the Monkey programming language from Thorsten Ball's "Writing An Interpreter In Go".
