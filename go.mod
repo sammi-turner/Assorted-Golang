@@ -1,3 +1,3 @@
-module monkey/packages
+module monkey
 
 go 1.19
