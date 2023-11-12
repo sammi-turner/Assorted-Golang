@@ -93,8 +93,6 @@ I asked the LLM to generate a TUI (Text User Interface) todo app using the gorm 
 
 In this conversation [conversation with Chat-GPT](https://chat.openai.com/share/b7e57624-f1cd-4d2c-b0dc-fbd2daa7fc9f) I was given the basic functionality I needed.
 
-After making some minor adjustments to the app, I uploaded it to this repo as "tui-todos".
-
 <br>
 
 ## Hacking the context window limit
