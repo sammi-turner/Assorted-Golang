@@ -1,6 +1,6 @@
 <br>
 
-# Monkey-Interpreter
+# Assorted-Golang
 
 Golang examples, codewars katas and an Monkey Interpreter.
 
