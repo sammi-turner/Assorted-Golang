@@ -1,0 +1,8 @@
+{{range .}}
+    <div>
+        <p>
+            {{.Title}}
+            <a href="#" hx-post="/delete?id={{.ID}}" hx-trigger="click" hx-target="#todo-list" hx-swap="innerHTML">Delete</a>
+        </p>
+    </div>
+{{end}}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Polyhedral Dice Roller</title>
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <style>
+        body {
+            background-color: #202020;
+            color: #f5f5f5;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        form {
+            margin-top: 15rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        input[type="number"], select, button {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0.4rem;
+            border: none;
+            background-color: #303030;
+            color: #f5f5f5;
+            font-size: 1.5rem;
+            box-sizing: border-box;
+            width: 35%;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        #result {
+            font-weight: bold;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+    <form hx-post="/roll" hx-swap="innerHTML" hx-target="#result">
+        <h1>Polyhedral Dice Roller</h1>
+        <select name="n">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+        <select name="sides">
+            <option value="4">d4</option>
+            <option value="6">d6</option>
+            <option value="8">d8</option>
+            <option value="10">d10</option>
+            <option value="12">d12</option>
+            <option value="20">d20</option>
+            <option value="100">d100</option>
+        </select>
+        <button type="submit" hx-trigger="click">Roll!</button>
+        <div id="result"></div>
+    </form>
+</body>
+</html>
+

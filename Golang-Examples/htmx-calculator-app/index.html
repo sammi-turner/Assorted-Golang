@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+    <style>
+        body {
+            background-color: #202020;
+            color: #f5f5f5;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        form {
+            margin-top: 15rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        input[type="number"], select, button {
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0.4rem;
+            border: none;
+            background-color: #303030;
+            color: #f5f5f5;
+            font-size: 1.5rem;
+            box-sizing: border-box;
+            width: 35%;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        #result {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form hx-post="/calculate" hx-trigger="submit" hx-target="#result">
+        <input type="number" step="any" name="firstNumber" placeholder="First number" required>
+        <select name="operation">
+            <option value="add">+</option>
+            <option value="sub">-</option>
+            <option value="mul">*</option>
+            <option value="div">/</option>
+        </select>
+        <input type="number" step="any" name="secondNumber" placeholder="Second number" required>
+        <button type="submit">Calculate</button>
+    </form>
+    <h2>Result: <span id="result"></span></h2>
+</body>
+</html>
