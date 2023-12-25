@@ -46,8 +46,8 @@ go build
 
 ## To compile and run the binary
 
-<br>
-
 ```
 go build && ./kvpt
 ```
+
+<br>
