@@ -45,7 +45,9 @@ Here are a few examples
 
 ## Nested Operations
 
-You can enter expressions with nested operations as well. For example
+You can enter expressions with nested operations as well. 
+
+For example
 
 ```
 > (add (mul 2 3) (div 10 2))
