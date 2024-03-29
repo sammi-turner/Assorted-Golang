@@ -23,6 +23,7 @@ The REPL will parse the expression, evaluate it, and print the result.
 
 Here are a few examples
 
+
 ```
 > (add 3 4)
 7
@@ -47,9 +48,7 @@ Here are a few examples
 
 ## Nested Operations
 
-You can enter expressions with nested operations as well. 
-
-For example
+You can enter expressions with nested operations as well. For example
 
 ```
 > (add (mul 2 3) (div 10 2))
