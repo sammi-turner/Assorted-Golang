@@ -17,7 +17,9 @@ Here, x and y are numbers (integers or floating-point values).
 
 ## Evaluation
 
-To evaluate an expression, simply enter it at the prompt and press Enter. The REPL will parse the expression, evaluate it, and print the result.
+To evaluate an expression, simply enter it at the prompt and press Enter. 
+
+The REPL will parse the expression, evaluate it, and print the result.
 
 Here are a few examples
 
