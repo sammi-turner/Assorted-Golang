@@ -1,34 +1,34 @@
 package main
 
 import (
-    "fmt"
-    "math/rand"
-    "time"
+	"fmt"
+	"math/rand"
+	"time"
 )
 
 func main() {
-    rand.Seed(time.Now().UnixNano())
-    secretNumber := rand.Intn(100) + 1
+	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
+	secretNumber := rng.Intn(100) + 1
 
-    fmt.Println("Welcome to the Guess the Number Game!\n\nI'm thinking of a number between 1 and 100...")
+	fmt.Print("\nWelcome to the Number Guessing Game!\n\nI'm thinking of a number between 1 and 100...\n")
 
-    for {
-        fmt.Print("\nMake a guess? ")
-        var guess int
-        _, err := fmt.Scan(&guess)
-        
-        if err != nil {
-            fmt.Println("Invalid input! Please enter a number.")
-            continue
-        }
+	for {
+		fmt.Print("\nMake a guess? ")
+		var guess int
+		_, err := fmt.Scan(&guess)
 
-        if guess < secretNumber {
-            fmt.Println("\nToo low...")
-        } else if guess > secretNumber {
-            fmt.Println("\nToo high...")
-        } else {
-            fmt.Println("\nYou've guessed the number correctly!\n")
-            break
-        }
-    }
+		if err != nil {
+			fmt.Println("Invalid input! Please enter a number.")
+			continue
+		}
+
+		if guess < secretNumber {
+			fmt.Print("\nToo low...\n")
+		} else if guess > secretNumber {
+			fmt.Print("\nToo high...\n")
+		} else {
+			fmt.Print("\nYou've guessed the number correctly!\n\n")
+			break
+		}
+	}
 }
