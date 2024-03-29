@@ -1,3 +1,5 @@
+<br>
+
 # S-Expression REPL
 
 This REPL supports the following arithmetic operations
@@ -10,6 +12,8 @@ This REPL supports the following arithmetic operations
 - Exponentiation: (pow x y)
 
 Here, x and y are numbers (integers or floating-point values).
+
+<br>
 
 ## Evaluation
 
@@ -37,6 +41,8 @@ Here are a few examples
 8
 ```
 
+<br>
+
 ## Nested Operations
 
 You can enter expressions with nested operations as well. For example
@@ -46,9 +52,13 @@ You can enter expressions with nested operations as well. For example
 11
 ```
 
+<br>
+
 ## Exit
 
 To exit the REPL, simply press Enter without any expression.
+
+<br>
 
 ## Error Handling
 
@@ -67,3 +77,5 @@ Mismatched parentheses.
 > (div 10 0)
 +Inf
 ```
+
+<br>
