@@ -62,22 +62,22 @@ To exit the REPL, simply press Enter without any expression.
 
 <br>
 
+## Error Handling
 
-## To build
-
-```
-make
-```
-
-## To run the binary
+The REPL includes error handling to provide meaningful error messages in case of invalid expressions or syntax errors. Here are a few examples:
 
 ```
-./bin/main
+> (add 3)
+Parse error: too few operands.
+
+> (sub 5 2 3)
+Parse error: too many operands.
+
+> (mul 2 (add 3 4)
+Mismatched parentheses.
+
+> (div 10 0)
++Inf
 ```
 
-## To build and run the binary
-
-```
-make && ./bin/main
-```
 <br>
