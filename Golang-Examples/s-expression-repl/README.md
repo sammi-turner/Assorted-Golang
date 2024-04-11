@@ -23,7 +23,6 @@ The REPL will parse the expression, evaluate it, and print the result.
 
 Here are a few examples
 
-
 ```
 > (add 3 4)
 7
@@ -63,22 +62,22 @@ To exit the REPL, simply press Enter without any expression.
 
 <br>
 
-## Error Handling
 
-The REPL includes error handling to provide meaningful error messages in case of invalid expressions or syntax errors. Here are a few examples:
+## To build
 
 ```
-> (add 3)
-Parse error: too few operands.
-
-> (sub 5 2 3)
-Parse error: too many operands.
-
-> (mul 2 (add 3 4)
-Mismatched parentheses.
-
-> (div 10 0)
-+Inf
+make
 ```
 
+## To run the binary
+
+```
+./bin/main
+```
+
+## To build and run the binary
+
+```
+make && ./bin/main
+```
 <br>
