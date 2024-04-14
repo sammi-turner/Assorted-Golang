@@ -2,7 +2,7 @@
 
 # Assorted-Golang
 
-Golang examples, codewars katas and a Monkey Interpreter.
+Golang examples and codewars katas.
 
 <br>
 
