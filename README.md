@@ -91,7 +91,7 @@ Then show me the code.
 
 I asked the LLM to generate a TUI (Text User Interface) todo app using the gorm ORM and sqlite. 
 
-In this conversation [conversation with Chat-GPT](https://chat.openai.com/share/b7e57624-f1cd-4d2c-b0dc-fbd2daa7fc9f) I was given the basic functionality I needed.
+In this [lengthy conversation with Chat-GPT](https://chat.openai.com/share/b7e57624-f1cd-4d2c-b0dc-fbd2daa7fc9f) I was given the basic functionality I needed.
 
 <br>
 
