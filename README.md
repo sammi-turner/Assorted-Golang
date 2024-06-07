@@ -74,7 +74,7 @@ However, given that Go is a mature language, backed by Google, there is a supris
 
 <br>
 
-## Function Generation With LLMs
+### Function Generation With LLMs
 
 I have had good results with prompts using the following template
 
@@ -87,7 +87,7 @@ Then show me the code.
 
 <br>
 
-## Example of Program Generation with Chat-GPT4
+### Example of Program Generation with Chat-GPT4
 
 I asked the LLM to generate a TUI (Text User Interface) todo app using the gorm ORM and sqlite. 
 
@@ -95,7 +95,7 @@ In this [lengthy conversation with Chat-GPT](https://chat.openai.com/share/b7e57
 
 <br>
 
-## Hacking the context window limit
+### Hacking the context window limit
 
 Although feeding errors back to Chat-GPT4 can yield good results, sometimes a conversation will drag on so long that the LLM "forgets" what you are talking about and the chatbots answers rapidly become useless.
 
