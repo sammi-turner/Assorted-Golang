@@ -60,7 +60,7 @@ go build && ./name-of-project
 
 ## Video course
 
-The FreeCodeCamp YouTube channel has a [lengthy beginners course](https://youtu.be/un6ZyFkqFKo) to get you started.
+The FreeCodeCamp YouTube channel has a [beginners course](https://youtu.be/un6ZyFkqFKo) to get you started.
 
 <br>
 
