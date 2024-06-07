@@ -1,6 +1,10 @@
+<br>
+
 # Monkey compiler 🐒
 
 A Monkey programming language compiler from  [Writing A Compiler In Go](https://compilerbook.com).
+
+<br>
 
 ## Building
 
@@ -9,6 +13,8 @@ To build the binary, enter
 ```sh
 go build
 ```
+
+<br>
 
 ## REPL
 
@@ -23,6 +29,8 @@ Hello, world!
 >> 
 ```
 
+<br>
+
 ## Scripts
 
 This compiler also supports running a single Monkey script file. For example,
@@ -32,7 +40,11 @@ $ ./monkey-compiler scripts/hello.monkey
 Hello, world!
 ```
 
+<br>
+
 ## The Monkey Language
+
+<br>
 
 ### Number types and variable bindings
 
@@ -51,6 +63,8 @@ Two number types are supported in this implementation: integers and floating-poi
 >> b
 a
 ```
+
+<br>
 
 ### Arithmetic and comparison expressions
 
@@ -71,6 +85,8 @@ true
 false
 ```
 
+<br>
+
 ### If expressions
 
 You can use `if` and `else` keywords for conditional expressions. The last value in an executed block is returned from the expression.
@@ -85,6 +101,8 @@ You can use `if` and `else` keywords for conditional expressions. The last value
 >> d
 200
 ```
+
+<br>
 
 ### Functions and closures
 
@@ -106,6 +124,8 @@ You can define functions using `fn` keyword. All functions are closures in Monke
 8
 ```
 
+<br>
+
 ### Strings
 
 You can build strings using a pair of double quotes `""`. Strings are immutable values just like numbers. You can concatenate strings with `+` operator.
@@ -116,6 +136,8 @@ You can build strings using a pair of double quotes `""`. Strings are immutable 
 >> hello("John");
 Hello John!
 ```
+
+<br>
 
 ### Arrays
 
@@ -133,6 +155,8 @@ Thorsten
 >> myArray[2]
 29
 ```
+
+<br>
 
 ### Hash maps
 
@@ -153,9 +177,13 @@ correct, an integer
 right, zero
 ```
 
+<br>
+
 ### Built-in functions
 
 There are some built-in functions in Monkey.
+
+<br>
 
 #### `len`
 
@@ -171,6 +199,8 @@ There are some built-in functions in Monkey.
 3
 ```
 
+<br>
+
 #### `puts`
 
 `puts` built-in function allows you to print out one or more objects to console (i.e. stdout).
@@ -179,6 +209,8 @@ There are some built-in functions in Monkey.
 >> puts("Hello, World")
 Hello, World
 ```
+
+<br>
 
 #### `first`
 
@@ -192,6 +224,8 @@ one
 nil
 ```
 
+<br>
+
 #### `last`
 
 `last` built-in function allows you to get the last element from an array. If the array is empty, `last` returns `nil`.
@@ -203,6 +237,8 @@ three
 >> last([])
 nil
 ```
+
+<br>
 
 #### `rest`
 
@@ -216,6 +252,8 @@ nil
 nil
 ```
 
+<br>
+
 #### `push`
 
 `push` built-in function allows you to add a new element to the end of an existing array. It allocates a new array instead of modifying the given one.
@@ -225,6 +263,8 @@ nil
 >> push(myArray, "four")
 [one, two, three, four]
 ```
+
+<br>
 
 #### `quote` / `unquote`
 
@@ -237,6 +277,8 @@ Quote((2 + 2)) # Unevaluated code
 Quote(3)
 ```
 
+<br>
+
 ### Single-line comments
 
 Comments begin with a hash mark (`#`) and continue to the end of the line. Thery are ignored by the compiler.
@@ -246,6 +288,8 @@ Comments begin with a hash mark (`#`) and continue to the end of the line. Thery
 >> let a = 1;  # This is an integer.
 1
 ```
+
+<br>
 
 ### Macros
 
@@ -266,3 +310,5 @@ You can define macros using `macro` keyword. Note that macro definitions must re
 greater
 nil
 ```
+
+<br>
