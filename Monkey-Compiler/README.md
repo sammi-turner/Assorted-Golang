@@ -1,10 +1,18 @@
 # Monkey compiler 🐒
 
-A Monkey programming language compiler from  [_Writing A Compiler In Go_](https://compilerbook.com).
+A Monkey programming language compiler from  [Writing A Compiler In Go](https://compilerbook.com).
 
-## Usage
+## Building
 
-The easiest way to get started is to run REPL:
+To build the binary, enter
+
+```sh
+go build
+```
+
+## REPL
+
+To run the REPL, enter
 
 ```
 $ ./monkey-compiler
@@ -15,18 +23,20 @@ Hello, world!
 >> 
 ```
 
-This compiler also supports running a single Monkey script file (for example `hello.monkey` file):
+## Scripts
+
+This compiler also supports running a single Monkey script file. For example,
 
 ```sh
 $ ./monkey-compiler scripts/hello.monkey
 Hello, world!
 ```
 
-## Getting started with Monkey
+## The Monkey Language
 
 ### Number types and variable bindings
 
-You can define and reassign to variables using `=` operator. Variables are dynamically typed and can be assigned to objects of any type in Monkey. You can use `let` keyword when defining variables, but it's completely optional and there is no difference between with and without `let` keyword. 
+Define and reassign to variables using the `=` operator. Variables are dynamically typed and can be assigned to objects of any type in Monkey. You can use `let` keyword when defining variables, but it's completely optional and there is no difference between with and without `let` keyword. 
 
 Two number types are supported in this implementation: integers and floating-point numbers.
 
