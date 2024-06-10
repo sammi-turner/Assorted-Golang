@@ -20,7 +20,7 @@ Ben Davis has a nice video walk through on how to [install Go and set up the pat
 
 ## To run a single main.go file
 
-```
+```sh
 go run main.go
 ```
 
@@ -28,7 +28,7 @@ go run main.go
 
 ## To create a go.mod file for a project
 
-```
+```sh
 go mod init name-of-project
 ```
 
@@ -36,7 +36,7 @@ go mod init name-of-project
 
 ## To compile a project that has a go.mod file
 
-```
+```sh
 go build
 ```
 
@@ -52,7 +52,7 @@ go build
 
 ## To compile and run a project
 
-```
+```sh
 go build && ./name-of-project
 ```
 
