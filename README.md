@@ -2,7 +2,7 @@
 
 # Assorted-Golang
 
-Golang example code, Codewars katas and a compiler for the Monkey programming language.
+Example code, Codewars katas and a compiler for the Monkey programming language.
 
 <br>
 
