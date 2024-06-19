@@ -6,13 +6,10 @@ import (
 )
 
 func main() {
-	test := "Hello, 世界"
-	n := 8
-
-    r, err := utils.NthRune(test, n)
-    if err != nil {
-        fmt.Println("Error:", err)
-    } else {
-		fmt.Printf("The rune at index %d is %c\n", n, r)
+	test := "Hello, 世界✨"
+    size := utils.RuneLength(test)
+	for i := 0; i < size; i++ {
+		r, _ := utils.NthRune(test, i)
+		fmt.Printf("%c\n", r)
 	}
 }
