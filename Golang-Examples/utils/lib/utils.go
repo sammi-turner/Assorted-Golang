@@ -2,7 +2,6 @@ package utils
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	"io"
 	"math/rand"
@@ -20,16 +19,24 @@ func Shell(command string) string {
 	return strings.TrimSpace(string(out))
 }
 
-// Takes the nth rune from a string, or returns an error if that index does not exist.
+// Gives the length of a string in runes
+func RuneLength(s string) int {
+	runes := []rune(s)
+	return len(runes)
+}
+
+// Returns the nth rune from a string, or returns an error if that index does not exist.
 func NthRune(s string, n int) (rune, error) {
-	count := 0
-	for _, runeValue := range s {
-		if count == n {
-			return runeValue, nil
-		}
-		count++
-	}
-	return 0, errors.New("index out of bounds")
+    if n < 0 {
+        return 0, fmt.Errorf("invalid index: %d", n)
+    }
+
+    runes := []rune(s)
+    if n >= len(runes) {
+        return 0, fmt.Errorf("index out of range: %d", n)
+    }
+
+    return runes[n], nil
 }
 
 // Flushes stdout.

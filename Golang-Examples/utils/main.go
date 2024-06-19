@@ -6,13 +6,13 @@ import (
 )
 
 func main() {
-	n := 0
-	rng := utils.NewRNG()
-	fmt.Print("Here are five dice rolls : ")
-	for n < 5 {
-		num := rng.Intn(6) + 1
-		fmt.Printf("%d ", num)
-		n += 1
+	test := "Hello, 世界"
+	n := 8
+
+    r, err := utils.NthRune(test, n)
+    if err != nil {
+        fmt.Println("Error:", err)
+    } else {
+		fmt.Printf("The rune at index %d is %c\n", n, r)
 	}
-	fmt.Println()
 }
