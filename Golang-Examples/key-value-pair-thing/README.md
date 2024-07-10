@@ -72,19 +72,19 @@ func queryTable() {
 
 KVPT provides the following functions:
 
-- `db_exists: string -> bool`: Checks if a SQLite database file exists.
-- `shell: string -> string`: Executes a shell command and returns the output as a string.
-- `is_sqlite_installed: unit -> bool`: Checks if SQLite3 is installed on the system.
-- `create_key_value_table: string -> string`: Creates a SQLite table with the specified name to store key-value pairs.
-- `insert_key_value_pair: string -> string -> string -> string`: Inserts a key-value pair into a specified table.
-- `select_all_pairs: string -> string`: Retrieves all key-value pairs from a specified table.
-- `select_all_keys: string -> string`: Retrieves all keys from a specified table.
-- `select_all_values: string -> string`: Retrieves all values from a specified table.
-- `delete_key_value_pair: string -> string -> string`: Deletes a key-value pair from a specified table.
-- `select_row_from_key: string -> string -> string`: Retrieves a row based on a specified key from a table.
-- `select_value_from_key: string -> string -> string`: Retrieves a value based on a specified key from a table.
-- `count_string_instances: string list -> string -> int`: Counts the occurrences of a string in a list of strings.
-- `table_contains_key: string -> string -> bool`: Checks if a table contains a specific key.
+- `db_exists`: Checks if a SQLite database file exists.
+- `shell`: Executes a shell command and returns the output as a string.
+- `is_sqlite_installed`: Checks if SQLite3 is installed on the system.
+- `create_key_value_table`: Creates a SQLite table with the specified name to store key-value pairs.
+- `insert_key_value_pair`: Inserts a key-value pair into a specified table.
+- `select_all_pairs`: Retrieves all key-value pairs from a specified table.
+- `select_all_keys`: Retrieves all keys from a specified table.
+- `select_all_values`: Retrieves all values from a specified table.
+- `delete_key_value_pair`: Deletes a key-value pair from a specified table.
+- `select_row_from_key`: Retrieves a row based on a specified key from a table.
+- `select_value_from_key`: Retrieves a value based on a specified key from a table.
+- `count_string_instances`: Counts the occurrences of a string in a list of strings.
+- `table_contains_key`: Checks if a table contains a specific key.
 
 <br>
 
@@ -94,4 +94,5 @@ SQL injection is a serious security risk when user input strings are directly pl
 
 <img src="bobby_tables.png" width="100%" height="auto" />
 
+<br>
 <br>
