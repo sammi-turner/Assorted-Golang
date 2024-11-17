@@ -44,7 +44,7 @@ go build
 
 ## To run a project
 
-```
+```sh
 ./name-of-project
 ```
 
