@@ -24,6 +24,8 @@ Ben Davis has a nice video walk through on how to [install Go and set up the pat
 go run main.go
 ```
 
+<br>
+
 ## To build a binary from a `main.go` file
 
 ```sh
@@ -44,14 +46,6 @@ go mod init name-of-project
 
 ```sh
 go build
-```
-
-<br>
-
-## To run a project
-
-```sh
-./name-of-project
 ```
 
 <br>
