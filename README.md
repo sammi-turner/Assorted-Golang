@@ -18,15 +18,21 @@ Ben Davis has a nice video walk through on how to [install Go and set up the pat
 
 <br>
 
-## To run a single main.go file
+## To run a `main.go` file
 
 ```sh
 go run main.go
 ```
 
+## To build a binary from a `main.go` file
+
+```sh
+go build main.go
+```
+
 <br>
 
-## To create a go.mod file for a project
+## To create a `go.mod` file for a project
 
 ```sh
 go mod init name-of-project
@@ -34,7 +40,7 @@ go mod init name-of-project
 
 <br>
 
-## To compile a project that has a go.mod file
+## To compile a project that has a `go.mod` file
 
 ```sh
 go build
@@ -46,14 +52,6 @@ go build
 
 ```sh
 ./name-of-project
-```
-
-<br>
-
-## To compile and run a project
-
-```sh
-go build && ./name-of-project
 ```
 
 <br>
