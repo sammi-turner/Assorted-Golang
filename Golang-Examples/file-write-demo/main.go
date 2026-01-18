@@ -7,20 +7,22 @@ import (
 
 func writeFile(name string, text string) error {
 	err := os.WriteFile(name, []byte(text), 0644)
-	if err != nil {
+	switch err {
+	case nil:
+		return nil
+	default:
 		return err
 	}
-	return nil
 }
 
 func main() {
 	name := "example.txt"
 	text := "Oh, hi Mark!"
-
 	err := writeFile(name, text)
-	if err != nil {
-		fmt.Println("Error: ", err)
+	switch err {
+	case nil:
+		fmt.Println("File written successfully.")
+	default:
+		fmt.Println("Error: file write failed.")
 	}
-
-	fmt.Println("File written successfully.")
 }
