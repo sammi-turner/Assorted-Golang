@@ -1,34 +1,38 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"math/rand"
+	"os"
+	"strconv"
 	"time"
 )
 
 func main() {
-	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
-	secretNumber := rng.Intn(100) + 1
-
-	fmt.Print("\nWelcome to the Number Guessing Game!\n\nI'm thinking of a number between 1 and 100...\n")
-
+	rand.Seed(time.Now().UnixNano())
+	secret := rand.Intn(100) + 1
+	reader := bufio.NewReader(os.Stdin)
+	attempts := 0
+	fmt.Println("\nGuess the secret number between 1 and 100...")
 	for {
-		fmt.Print("\nMake a guess? ")
-		var guess int
-		_, err := fmt.Scan(&guess)
-
+		attempts++
+		fmt.Print("> ")
+		text, _ := reader.ReadString('\n')
+		text = text[:len(text)-1]
+		guess, err := strconv.Atoi(text)
 		if err != nil {
-			fmt.Println("Invalid input! Please enter a number.")
+			fmt.Println("\nPlease enter a valid integer.")
 			continue
 		}
-
-		if guess < secretNumber {
-			fmt.Print("\nToo low...\n")
-		} else if guess > secretNumber {
-			fmt.Print("\nToo high...\n")
-		} else {
-			fmt.Print("\nYou've guessed the number correctly!\n\n")
-			break
+		switch {
+		case guess < secret:
+			fmt.Println("\nToo low...")
+		case guess > secret:
+			fmt.Println("\nToo high...")
+		default:
+			fmt.Printf("\nCorrect! You guessed the number in %d attempts.\n\n", attempts)
+			return
 		}
 	}
 }
