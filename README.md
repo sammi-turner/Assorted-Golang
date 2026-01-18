@@ -57,9 +57,3 @@ go build *.go
 ```
 
 <br>
-
-## Syntax
-
-`Learn X in Y Minutes` has a [Golang Primer](https://youtu.be/un6ZyFkqFKo) to familiarise you with the language syntax.
-
-<br>
