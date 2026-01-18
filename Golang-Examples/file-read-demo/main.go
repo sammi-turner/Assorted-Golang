@@ -7,19 +7,20 @@ import (
 
 func readFile(fileName string) (string, error) {
 	bytes, err := os.ReadFile(fileName)
-	if err != nil {
+	switch err {
+	case nil:
+		return string(bytes), nil
+	default:
 		return "", err
 	}
-
-	return string(bytes), nil
 }
 
 func main() {
 	content, err := readFile("example.txt")
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+	switch err {
+	case nil:
+		fmt.Println(content)
+	default:
+		fmt.Println("File read failed.")
 	}
-
-	fmt.Println(content)
 }
