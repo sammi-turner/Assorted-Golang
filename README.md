@@ -42,6 +42,14 @@ go mod init name-of-project
 
 <br>
 
+## To run a project that has a `go.mod` file
+
+```sh
+go run
+```
+
+<br>
+
 ## To compile a project that has a `go.mod` file
 
 ```sh
