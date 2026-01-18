@@ -18,18 +18,18 @@ Ben Davis has a nice video walk through on how to [install Go and set up the pat
 
 <br>
 
-## To run a single `main.go` file
+## To run a go package without a `go.mod` file
 
 ```sh
-go run main.go
+go run *.go
 ```
 
 <br>
 
-## To build a binary from a single `main.go` file
+## To build a binary without a `go.mod` file
 
 ```sh
-go build main.go
+go build *.go
 ```
 
 <br>
@@ -48,12 +48,4 @@ go mod init name-of-project
 go build
 ```
 
-<br>
-
-## To compile a project without a `go.mod` file
-
-```sh
-go build *.go
-```
-
-<br>
+<bt>
