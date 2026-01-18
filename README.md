@@ -18,7 +18,7 @@ Ben Davis has a nice video walk through on how to [install Go and set up the pat
 
 <br>
 
-## To run a `main.go` file
+## To run a single `main.go` file
 
 ```sh
 go run main.go
@@ -26,7 +26,7 @@ go run main.go
 
 <br>
 
-## To build a binary from a `main.go` file
+## To build a binary from a single `main.go` file
 
 ```sh
 go build main.go
@@ -50,8 +50,16 @@ go build
 
 <br>
 
-## Video course
+## To compile a project without a `go.mod` file
 
-The FreeCodeCamp YouTube channel has a [beginners course](https://youtu.be/un6ZyFkqFKo) to get you started.
+```sh
+go build *.go
+```
+
+<br>
+
+## Syntax
+
+`Learn X in Y Minutes` has a [Golang Primer](https://youtu.be/un6ZyFkqFKo) to familiarise you with the language syntax.
 
 <br>
