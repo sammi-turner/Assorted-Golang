@@ -37,10 +37,12 @@ func IsFloat(arg string) bool {
 
 func IsMantissaZero(arg string) bool {
 	f, err := strconv.ParseFloat(arg, 64)
-	if err != nil {
+	switch err {
+	case nil:
+		return f == float64(int(f))
+	default:
 		return false
 	}
-	return f == float64(int(f))
 }
 
 func TruncateExcessZeros(arg string) string {
@@ -87,11 +89,12 @@ func RemoveEmptyStrings(arg []string) []string {
 func PadParens(arg string) string {
 	var result string
 	for _, c := range arg {
-		if c == '(' {
+		switch {
+		case c == '(':
 			result += " ( "
-		} else if c == ')' {
+		case c == ')':
 			result += " ) "
-		} else {
+		default:
 			result += string(c)
 		}
 	}
@@ -111,15 +114,16 @@ func Tokenise(arg string) []Token {
 	v1 := RemoveEmptyStrings(v0)
 	for _, s := range v1 {
 		t.Value = s
-		if s == "(" {
+		switch {
+		case s == "(":
 			t.Type = "OPEN"
-		} else if s == ")" {
+		case s == ")":
 			t.Type = "CLOSE"
-		} else if IsFunction(s) {
+		case IsFunction(s):
 			t.Type = "FUNC"
-		} else if IsInt(s) || IsFloat(s) {
+		case IsInt(s) || IsFloat(s):
 			t.Type = "NUMBER"
-		} else {
+		default:
 			t.Type = "ILLEGAL"
 		}
 		result = append(result, t)
@@ -132,45 +136,48 @@ func Parse(arg []Token) string {
 	size := len(arg)
 	expected := []string{"OPEN", "NUMBER"}
 	for i := 0; i < size; i++ {
-		if StringPosition(arg[i].Type, expected) == -1 {
+		switch {
+		case StringPosition(arg[i].Type, expected) == -1:
 			return fmt.Sprintf("Unexpected token '%s' at position %d.", arg[i].Value, i)
-		} else if arg[i].Type == "OPEN" {
+		case arg[i].Type == "OPEN":
 			openParen++
 			expected = []string{"FUNC", "OPEN", "NUMBER"}
-		} else if arg[i].Type == "CLOSE" {
+		case arg[i].Type == "CLOSE":
 			openParen--
-			if openParen == 0 {
+			switch openParen {
+			case 0:
 				expected = []string{"OPEN", "NUMBER"}
-			} else {
+			default:
 				expected = []string{"CLOSE", "OPEN", "NUMBER"}
 			}
-		} else if arg[i].Type == "NUMBER" {
+		case arg[i].Type == "NUMBER":
 			expected = []string{"CLOSE", "OPEN", "NUMBER"}
-		} else {
+		default:
 			expected = []string{"OPEN", "NUMBER"}
 		}
 	}
-	if openParen != 0 {
+	switch openParen {
+	case 0:
+		return "valid"
+	default:
 		return "Mismatched parentheses."
 	}
-	return "valid"
 }
 
 func Evaluate(arg []Token) string {
 	var funcs, operands []string
 	for _, t := range arg {
-		if t.Type == "FUNC" {
+		switch t.Type {
+		case "FUNC":
 			funcs = append(funcs, t.Value)
-		}
-		if t.Type == "NUMBER" {
+		case "NUMBER":
 			operands = append(operands, t.Value)
-		}
-		if t.Type == "CLOSE" {
+		case "CLOSE":
 			var n0, n1, n2 float64
-			if len(funcs) == 0 {
+			switch {
+			case len(funcs) == 0:
 				return "Parse error: too many operands."
-			}
-			if len(operands) < 2 {
+			case len(operands) < 2:
 				return "Parse error: too few operands."
 			}
 			f := funcs[len(funcs)-1]
@@ -196,17 +203,17 @@ func Evaluate(arg []Token) string {
 			operands = append(operands, fmt.Sprintf("%v", n2))
 		}
 	}
-	if len(funcs) != 0 {
+	switch {
+	case len(funcs) != 0:
 		return "Parse error: too few operands."
-	}
-	if len(operands) > 1 {
+	case len(operands) > 1:
 		return "Parse error: too many operands."
-	}
-	if IsMantissaZero(operands[0]) {
+	case IsMantissaZero(operands[0]):
 		r := ToInt(operands[0])
 		return fmt.Sprintf("%d", r)
+	default:
+		return TruncateExcessZeros(operands[0])
 	}
-	return TruncateExcessZeros(operands[0])
 }
 
 func main() {
@@ -221,10 +228,11 @@ func main() {
 		}
 		stream = Tokenise(s)
 		p = Parse(stream)
-		if p == "valid" {
+		switch p {
+		case "valid":
 			r = Evaluate(stream)
 			fmt.Println(r)
-		} else {
+		default:
 			fmt.Println(p)
 		}
 	}
