@@ -38,9 +38,10 @@ Below are some examples drawn from the main.go file.
 
 ```go
 func createTable() {
-	if DbExists("kv") {
+	switch {
+	case DbExists("kv"):
 		fmt.Println("\nTable already exists.")
-	} else {
+	default:
 		CreateKeyValueTable("kv")
 		InsertKeyValuePair("kv", "John", "Plumber")
 		InsertKeyValuePair("kv", "Bill", "Firefighter")
@@ -52,16 +53,12 @@ func queryTable() {
 	v0 := SelectAllPairs("kv")
 	v1 := SelectAllKeys("kv")
 	v2 := SelectAllValues("kv")
-
 	DeleteKeyValuePair("kv", "Bill")
 	v3 := TableContainsKey("kv", "Bill")
-
 	v4 := SelectAllKeys("kv")
 	v5 := SelectAllValues("kv")
-
 	v6 := SelectRowFromKey("kv", "John")
 	v7 := SelectValueFromKey("kv", "Susan")
-
 	fmt.Printf("\n%s\n\n%s\n\n%s\n\n%t\n\n%s\n\n%s\n\n%s\n\n%s\n\n", v0, v1, v2, v3, v4, v5, v6, v7)
 }
 ```
@@ -94,5 +91,4 @@ SQL injection is a serious security risk when user input strings are directly pl
 
 <img src="bobby_tables.png" width="100%" height="auto" />
 
-<br>
 <br>
