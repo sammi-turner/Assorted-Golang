@@ -1,12 +1,27 @@
 package main
 
 import (
+	"os"
 	"errors"
 	"fmt"
 	"math"
+	"bufio"
+	"strings"
+	"strconv"
 )
 
-// Helper function to check if a number is prime
+func isInt(s string) bool {
+	_, err := strconv.Atoi(s)
+	return err == nil
+}
+
+func userInput() string {
+	fmt.Print("> ")
+	reader := bufio.NewReader(os.Stdin)
+	s, _ := reader.ReadString('\n')
+	return strings.TrimSuffix(s, "\n")
+}
+
 func isPrime(n int) bool {
 	if n <= 1 {
 		return false
@@ -26,12 +41,10 @@ func isPrime(n int) bool {
 	return true
 }
 
-// Function to compute the nth prime, where 2 is the 1st.
 func nthPrime(n int) (int, error) {
 	if n < 1 {
-		return 0, errors.New("input must be a positive integer")
+		return 0, errors.New("Input must be a positive integer.")
 	}
-
 	count := 0
 	num := 1
 	for count < n {
@@ -44,17 +57,21 @@ func nthPrime(n int) (int, error) {
 }
 
 func main() {
-	prime, err := nthPrime(10)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(prime)
-	}
-
-	prime, err = nthPrime(-5)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(prime)
+	for {
+		s := userInput()
+		switch {
+		case !isInt(s):
+			return
+		default:
+			n, _ := strconv.Atoi(s)
+			prime, err := nthPrime(n)
+			switch err {
+			case nil:
+				fmt.Printf("%d is number %d in the list of primes.\n\n", prime, n)
+			default:
+				fmt.Println(err)
+				return
+			}
+		}
 	}
 }
