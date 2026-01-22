@@ -30,13 +30,13 @@ func NthRune(s string, n int) (rune, error) {
     if n < 0 {
         return 0, fmt.Errorf("invalid index: %d", n)
     }
-
     runes := []rune(s)
-    if n >= len(runes) {
-        return 0, fmt.Errorf("index out of range: %d", n)
-    }
-
-    return runes[n], nil
+	switch {
+	case n >= len(runes):
+		return 0, fmt.Errorf("index out of range: %d", n)
+	default:
+		return runes[n], nil
+	}
 }
 
 // Flushes stdout.
@@ -81,32 +81,24 @@ func ClearConsole() {
 // Returns true if the named file exists in the working directory.
 func FileExists(name string) bool {
 	_, err := os.Stat(name)
-	if err == nil {
-		return true
-	}
-	if os.IsNotExist(err) {
-		return false
-	}
-	return false
+	return err == nil
 }
 
 // Reads the contents of a file into a string.
 func ReadFile(file string) (string, error) {
 	bytes, err := os.ReadFile(file)
-	if err != nil {
+	switch err {
+	case nil:
+		return string(bytes), nil
+	default:
 		return "", err
 	}
-
-	return string(bytes), nil
 }
 
 // Writes the contents of a string to a file.
 func WriteFile(file string, text string) error {
 	err := os.WriteFile(file, []byte(text), 0644)
-	if err != nil {
-		return err
-	}
-	return nil
+	return err
 }
 
 // Append the contents of a string to a file.
@@ -116,22 +108,14 @@ func AppendFile(file string, text string) error {
 		return err
 	}
 	defer f.Close()
-
 	_, err = io.WriteString(f, text)
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return err
 }
 
 // Deleted a file from the working directory.
 func DeleteFile(filename string) error {
 	err := os.Remove(filename)
-	if err != nil {
-		return err
-	}
-	return nil
+	return err
 }
 
 // Seeds the random number generator
@@ -157,10 +141,12 @@ func CountRuneInstances(s string, r rune) int {
 
 // Returns either the nth string from a slice of strings, or an error.
 func GetNthString(strings []string, n int) (string, error) {
-	if n < 0 || n >= len(strings) {
-		return "", fmt.Errorf("index out of range. The length of the slice is %d", len(strings))
+	switch {
+	case n < 0 || n >= len(strings):
+		return "", fmt.Errorf("Index out of range. The length of the slice is %d", len(strings))
+	default:
+		return strings[n], nil
 	}
-	return strings[n], nil
 }
 
 // Returns the number of instances of a string in a slice of strings.
@@ -177,19 +163,23 @@ func CountStringInstances(sos []string, s string) int {
 // Returns the nth portion of a string, as delimited by a rune, or an empty string.
 func NthDelimitedString(s string, r rune, n int) string {
 	split := strings.Split(s, string(r))
-	if n < len(split) && n >= 0 {
+	switch {
+	case n < len(split) && n >= 0:
 		return split[n]
+	default:
+		return ""
 	}
-	return ""
 }
 
 // Returns either an integer or an error message.
 func ToInt(s string) (int, error) {
 	i, err := strconv.Atoi(s)
-	if err != nil {
-		return 0, fmt.Errorf("'%s' is not a valid integer", s)
+	switch err {
+	case nil:
+		return i, nil
+	default:
+		return 0, err
 	}
-	return i, nil
 }
 
 // Returns true if the string represents an integer, or false if it does not.
@@ -201,10 +191,12 @@ func IsInt(s string) bool {
 // Returns either a float64 or an error message.
 func ToFloat64(s string) (float64, error) {
 	f, err := strconv.ParseFloat(s, 64)
-	if err != nil {
-		return 0, fmt.Errorf("error converting string to float64: %w", err)
+	switch err {
+	case nil:
+		return f, nil
+	default:
+		return 0, err
 	}
-	return f, nil
 }
 
 // Returns true if the string represents a float64, or false if it does not.
@@ -234,14 +226,12 @@ func PrintStrings(sos []string) {
 func SplitString(s string, d rune) []string {
 	var result []string
 	start := 0
-
 	for i, r := range s {
 		if r == d {
 			result = append(result, s[start:i])
 			start = i + 1
 		}
 	}
-
 	result = append(result, s[start:])
 	return result
 }

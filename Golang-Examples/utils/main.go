@@ -6,9 +6,11 @@ import (
 
 func main() {
     r, err := ReadFile("test.txt")
-    if err != nil {
+    switch err {
+    case nil:
+        fmt.Printf("%s\n", r)
+    default:
         fmt.Println("Error:", err)
         return
     }
-    fmt.Printf("%s\n", r)
 }
