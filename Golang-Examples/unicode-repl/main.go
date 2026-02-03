@@ -10,17 +10,19 @@ import (
     "unicode/utf8"
 )
 
+func UserInput(s string) string {
+	fmt.Print(s)
+	reader := bufio.NewReader(os.Stdin)
+	userInput, _ := reader.ReadString('\n')
+	return strings.TrimSuffix(userInput, "\n")
+}
+
 func main() {
-    scanner := bufio.NewScanner(os.Stdin)
     fmt.Println("\nUnicode REPL - enter a character, decimal or 0xHex (empty string to exit)")
     for {
-        fmt.Print("\n> ")
-        if !scanner.Scan() {
-            break
-        }
-        input := strings.TrimSpace(scanner.Text())
+        input := UserInput("\n> ")
 		if input == "" {
-			fmt.Println("\n")
+            fmt.Println()
             return
 		}
     	u, err := strconv.ParseUint(input, 0, 32)
@@ -29,13 +31,13 @@ func main() {
             r := rune(u)
             switch {
             case !utf8.ValidRune(r):
-                fmt.Printf("%d (0x%X) is not a valid Unicode code point.\n", u, u)
+                fmt.Println("Not a valid rune.")
             case r == ' ':
-                fmt.Printf("That is the space character\n")
+                fmt.Println("Space character.")
             case unicode.IsGraphic(r):
                 fmt.Printf("%c\n", r)
             default:
-                fmt.Printf("Non-graphical character: %q\n", r)
+                fmt.Println("Does not correspond to a rune.")
             }
         default:
             fmt.Println("Please enter a number or hex value.")
