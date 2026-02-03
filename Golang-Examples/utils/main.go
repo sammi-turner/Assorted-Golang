@@ -5,12 +5,6 @@ import (
 )
 
 func main() {
-    r, err := ReadFile("test.txt")
-    switch err {
-    case nil:
-        fmt.Printf("%s\n", r)
-    default:
-        fmt.Println("Error:", err)
-        return
-    }
+    s := ReadFile("test.txt")
+    fmt.Println(AppendString("Hello! ", s))
 }

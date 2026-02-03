@@ -25,17 +25,16 @@ func RuneLength(s string) int {
 	return len(runes)
 }
 
-// Returns the nth rune from a string, or returns an error if that index does not exist.
-func NthRune(s string, n int) (rune, error) {
-    if n < 0 {
-        return 0, fmt.Errorf("invalid index: %d", n)
-    }
+// Returns either a string containing the nth rune in s, or an empty string
+func NthRune(s string, n int) string {
     runes := []rune(s)
 	switch {
+	case n < 0:
+		return ""
 	case n >= len(runes):
-		return 0, fmt.Errorf("index out of range: %d", n)
+		return ""
 	default:
-		return runes[n], nil
+		return string(runes[n])
 	}
 }
 
@@ -85,37 +84,37 @@ func FileExists(name string) bool {
 }
 
 // Reads the contents of a file into a string.
-func ReadFile(file string) (string, error) {
+func ReadFile(file string) string {
 	bytes, err := os.ReadFile(file)
 	switch err {
 	case nil:
-		return string(bytes), nil
+		return string(bytes)
 	default:
-		return "", err
+		return ""
 	}
 }
 
 // Writes the contents of a string to a file.
-func WriteFile(file string, text string) error {
+func WriteFile(file string, text string) bool {
 	err := os.WriteFile(file, []byte(text), 0644)
-	return err
+	return err == nil
 }
 
 // Append the contents of a string to a file.
-func AppendFile(file string, text string) error {
+func AppendFile(file string, text string) bool {
 	f, err := os.OpenFile(file, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		return err
+		return false
 	}
 	defer f.Close()
 	_, err = io.WriteString(f, text)
-	return err
+	return err == nil
 }
 
 // Deleted a file from the working directory.
-func DeleteFile(filename string) error {
+func DeleteFile(filename string) bool {
 	err := os.Remove(filename)
-	return err
+	return err == nil
 }
 
 // Seeds the random number generator
@@ -132,11 +131,6 @@ func RemoveEmptyStrings(sos []string) []string {
 		}
 	}
 	return result
-}
-
-// Returns the number of instances of a rune that occur within a string.
-func CountRuneInstances(s string, r rune) int {
-	return strings.Count(s, string(r))
 }
 
 // Returns either the nth string from a slice of strings, or an error.
@@ -158,17 +152,6 @@ func CountStringInstances(sos []string, s string) int {
 		}
 	}
 	return count
-}
-
-// Returns the nth portion of a string, as delimited by a rune, or an empty string.
-func NthDelimitedString(s string, r rune, n int) string {
-	split := strings.Split(s, string(r))
-	switch {
-	case n < len(split) && n >= 0:
-		return split[n]
-	default:
-		return ""
-	}
 }
 
 // Returns either an integer or an error message.
@@ -205,16 +188,6 @@ func IsFloat64(s string) bool {
 	return err == nil
 }
 
-// Returns the number of (possibly empty) substrings in a string, as delimited by a rune.
-// A non-empty string without the delimiter will return 1.
-// The empty string will return 0.
-func SubstringCount(s string, r rune) int {
-	if s == "" {
-		return 0
-	}
-	return strings.Count(s, string(r)) + 1
-}
-
 // Prints each string in a slice on a new line.
 func PrintStrings(sos []string) {
 	for _, s := range sos {
@@ -222,16 +195,10 @@ func PrintStrings(sos []string) {
 	}
 }
 
-// Creates a slice of strings from a parent string and a delimiter rune.
-func SplitString(s string, d rune) []string {
-	var result []string
-	start := 0
-	for i, r := range s {
-		if r == d {
-			result = append(result, s[start:i])
-			start = i + 1
-		}
-	}
-	result = append(result, s[start:])
-	return result
+// Appends one string to another
+func AppendString(l, r string) string {
+	var b strings.Builder
+	b.WriteString(l)
+	b.WriteString(r)
+	return b.String()
 }
