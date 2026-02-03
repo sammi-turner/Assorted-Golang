@@ -20,18 +20,16 @@ func Shell(command string) string {
 }
 
 // Gives the length of a string in runes
-func RuneLength(s string) int {
+func RuneLength(s string) uint32 {
 	runes := []rune(s)
-	return len(runes)
+	return uint32(len(runes))
 }
 
 // Returns either a string containing the nth rune in s, or an empty string
-func NthRune(s string, n int) string {
+func NthRune(s string, n uint32) string {
     runes := []rune(s)
 	switch {
-	case n < 0:
-		return ""
-	case n >= len(runes):
+	case n >= uint32(len(runes)):
 		return ""
 	default:
 		return string(runes[n])
