@@ -26,7 +26,7 @@ func RuneLength(s string) uint32 {
 }
 
 // Returns either a string containing the nth rune in s, or an empty string
-func NthRune(s string, n uint32) string {
+func NthRuneString(s string, n uint32) string {
     runes := []rune(s)
 	switch {
 	case n >= uint32(len(runes)):
